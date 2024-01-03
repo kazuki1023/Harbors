@@ -1,5 +1,5 @@
 import 'tailwindcss/tailwind.css'
-import Image from 'next/image';
+import Image from "next/legacy/image";
 const HeaderLogo = () => {
   return (
     <div className="relative w-full aspect-w-2 aspect-h-1" >
