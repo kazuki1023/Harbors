@@ -7,7 +7,9 @@ export const LineButtonContainer = () => {
     const nonce = generateRandomString();
 
     const clientId = process.env.NEXT_PUBLIC_LINE_CLIENT_ID;
+    console.log(clientId);
     const redirectUri = encodeURI("https://harbors.vercel.app/dashboard")
+    console.log(redirectUri);
     const scope = 'profile%20openid';
 
     const url = `https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=${clientId}&redirect_uri=${redirectUri}&state=${state}&scope=${scope}&nonce=${nonce}`;
@@ -17,3 +19,4 @@ export const LineButtonContainer = () => {
     <LineButtonPresentation onClick={handleLogin}/>
   )
 }
+
