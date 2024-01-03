@@ -1,4 +1,4 @@
-import GenerateNameClassSafelist from './src/utils/tailwind/generateClassSafelist'
+// import GenerateNameClassSafelist from '@/utils/generateClassSafelist'
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
@@ -9,7 +9,17 @@ const config: Config = {
     './src/layouts/**/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
-  safelist: ['text-blue-100', 'bg-blue-800', 'border-blue-100', 'text-red-100', 'bg-red-800', 'border-red-100', 'text-yellow-100', 'bg-yellow-800', 'border-yellow-100'],
+  safelist: [
+    'text-blue-800',
+    'bg-blue-100',
+    'border-blue-100',
+    'text-red-800',
+    'bg-red-100',
+    'border-red-100',
+    'text-green-800',
+    'bg-green-100',
+    'border-green-100',
+  ],
   theme: {
     extend: {
       backgroundImage: {
