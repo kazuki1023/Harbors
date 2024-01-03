@@ -2,7 +2,7 @@ import Checkbox from '@/components/atoms/Checkbox';
 import { checkList } from '@/utils/checkList';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import GenerateNameClassSafelist from '@/utils/generateClassSafelist';
+// import GenerateNameClassSafelist from '@/utils/generateClassSafelist';
 import { getLabelColors } from '@/utils/getLabelColors';
 
 interface CheckList {
@@ -15,8 +15,6 @@ interface CheckList {
 export const CheckboxSectionPresentation: React.FC = () => {
   const { register, handleSubmit, watch } = useForm();
   const [checkLists, setCheckLists] = useState<CheckList[]>(checkList);
-  console.log(GenerateNameClassSafelist());
-  console.log(getLabelColors(checkList[0].label))
   return (
     <div className="flex flex-col items-center justify-center">
       {checkLists.map((check) => (
