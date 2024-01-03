@@ -1,5 +1,5 @@
 import 'tailwindcss/tailwind.css';
-import Image from 'next/image';
+import Image from "next/image";
 import Link from 'next/link';
 const Header = () => {
   return (
@@ -12,7 +12,10 @@ const Header = () => {
               alt="harbors"
               width={60}
               height={60}
-            />
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} />
           </Link>
         </div>
         <div className="flex items-center lg:order-2 absolute top-4 right-5">
@@ -20,7 +23,7 @@ const Header = () => {
         </div>
       </nav>
     </header>
-  )
+  );
 }
 
 export default Header;

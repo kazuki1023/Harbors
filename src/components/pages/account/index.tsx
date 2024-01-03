@@ -1,15 +1,15 @@
 import  BaseLayout  from '@/layouts/BaseLayout';
 import HeaderLogo from '@/components/organisms/HeadLogo';
 import { CheckboxSection } from '@/components/organisms/CheckboxSection';
+import { LineButton } from '@/components/organisms/LineButton';
 
-const Dashboard = ()=> {
+const Account = ()=> {
   return (
     <BaseLayout>
-      <div>Dashboard</div>
-      <HeaderLogo />
-      <CheckboxSection />
+      <div>Account</div>
+      <LineButton />
     </BaseLayout>
   )
 }
 
-export default Dashboard;
+export default Account;
