@@ -1,11 +1,18 @@
-import { checkList } from "./checkList";
+// import { checkList } from "./checkList";
+// const colors = [
+//   "blue",
+//   "red",
+//   "green",
+// ];
+// const iconColor = (color: string) => {
+//   return [
+//     `bg-${color}-100`,    // 背景色
+//     `text-${color}-800`,  // テキスト色
+//     `border-${color}-100` // ボーダー色
+//   ];
+// };
+// const GenerateNameClassSafelist = () => {
+//   return colors.flatMap(iconColor);
+// };
 
-const GenerateNameClassSafelist = () => {
-  return checkList.flatMap(item => [
-    `text-${item.color}-100`,
-    `bg-${item.color}-800`,
-    `border-${item.color}-100`
-  ]);
-};
-
-export default GenerateNameClassSafelist;
+// export default GenerateNameClassSafelist;
