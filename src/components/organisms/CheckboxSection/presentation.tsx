@@ -9,7 +9,6 @@ interface CheckList {
   id: number;
   label: string;
   checked: boolean;
-  color: []
 }
 
 export const CheckboxSectionPresentation: React.FC = () => {
