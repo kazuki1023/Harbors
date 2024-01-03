@@ -1,4 +1,4 @@
-import { checkList } from "../const/checkList";
+import { checkList } from "./checkList";
 
 const GenerateNameClassSafelist = () => {
   return checkList.flatMap(item => [
