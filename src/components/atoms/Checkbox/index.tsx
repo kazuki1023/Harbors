@@ -13,7 +13,13 @@ const Checkbox = ({ id, label, register, color, ...props }: Props) => {
     <div className="form-control">
       <label className="label cursor-pointer">
         <span className={`text-xs font-medium mr-2 px-2.5 py-0.5 rounded md:text-xl lg:text-2xl xl:text-3xl ${colors}`} >{label}</span>
-        <input type="checkbox" className="checkbox " id={`${id}`} name="plans[]" value={`${id}`} />
+        <input 
+          {...register(`checkedPlans[]`)}
+          type="checkbox"
+          className="checkbox"
+          id={`${id}`}
+          value={`${id}`}
+        />
       </label>
     </div>
   )
