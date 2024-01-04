@@ -8,7 +8,7 @@ async function createUsersTable() {
     await sql`
       CREATE TABLE IF NOT EXISTS users (
         id SERIAL PRIMARY KEY,
-        userId TEXT NOT NULL UNIQUE,
+        id_token TEXT NOT NULL UNIQUE,
         name VARCHAR(255) NOT NULL,
         picture TEXT,
         createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -57,7 +57,7 @@ async function createPlansTable() {
       CREATE TABLE IF NOT EXISTS plans (
         id SERIAL PRIMARY KEY,
         planId INTEGER REFERENCES tasks(id),
-        userId TEXT REFERENCES users(userId)
+        userId TEXT REFERENCES users(id_token)
       );
     `;
 
