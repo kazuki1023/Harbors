@@ -28,7 +28,24 @@ const Dashboard = () => {
             })
               .then(response => response.json())
               .then(profileData => {
-                console.log(profileData);
+                fetch('/api/insertUser', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify({
+                    userId: profileData.userId,
+                    name: profileData.displayName,
+                    picture: profileData.pictureUrl
+                  })
+                })
+                .then(response => response.json())
+                .then(data => {
+                  console.log(data.message);
+                })
+                .catch(error => {
+                  console.error('ユーザー情報の挿入中にエラーが発生しました', error);
+                });
               })
               .catch(error => {
                 console.error('トークン検証中にエラーが発生しました', error);
