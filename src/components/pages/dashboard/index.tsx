@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import BaseLayout from '@/layouts/BaseLayout';
 import HeaderLogo from '@/components/organisms/HeadLogo';
 import { CheckboxSection } from '@/components/organisms/CheckboxSection';
+import  PlanTable  from '@/components/organisms/PlanTable';
 // import getUser from '@/scripts/getUser';
 
 const Dashboard = () => {
@@ -106,8 +107,9 @@ const Dashboard = () => {
       <HeaderLogo />
       <form onSubmit={handleSubmit(onSubmit)}>
         <CheckboxSection register={register} />
-        <button type="submit">送信</button>
+        <button type="submit">登録</button>
       </form>
+      <PlanTable />
     </BaseLayout>
   )
 }
