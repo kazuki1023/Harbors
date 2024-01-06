@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import BaseLayout from '@/layouts/BaseLayout';
 import HeaderLogo from '@/components/organisms/HeadLogo';
 import { CheckboxSection } from '@/components/organisms/CheckboxSection';
+// import getUser from '@/scripts/getUser';
 
 const Dashboard = () => {
   const router = useRouter();
@@ -38,15 +39,12 @@ const Dashboard = () => {
                     'Content-Type': 'application/json'
                   },
                   body: JSON.stringify({
-                    userId: profileData.userId,
+                    userId: localStorage.getItem('id_token'),
                     name: profileData.displayName,
                     picture: profileData.pictureUrl
                   })
                 })
                   .then(response => response.json())
-                  .then(data => {
-                    console.log(data.id);
-                  })
                   .catch(error => {
                     console.error('ユーザー情報の挿入中にエラーが発生しました', error);
                   });
@@ -66,11 +64,24 @@ const Dashboard = () => {
   const onSubmit = (data: any) => {
     console.log(data);
     const idToken = localStorage.getItem('id_token');
-    if (!idToken) {
-      console.error('IDトークンが見つかりません');
-      return;
-    }
-    const planIds = data.checkedPlans; // フォームから取得したプランIDの配列
+    fetch('/api/verifyToken', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        id_token: idToken,
+        client_id: process.env.NEXT_PUBLIC_LINE_CLIENT_ID
+      })
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+      })
+      .catch(error => {
+        console.error('トークン検証中にエラーが発生しました', error);
+      });
+    const planIds = data.checkedPlans
     fetch('/api/insertPlan', {
       method: 'POST',
       headers: {
@@ -83,7 +94,7 @@ const Dashboard = () => {
     })
       .then(response => response.json())
       .then(data => {
-        console.log('プランが挿入されました', data);
+        console.log(data);
       })
       .catch(error => {
         console.error('プランの挿入中にエラーが発生しました', error);
