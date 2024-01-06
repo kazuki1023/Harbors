@@ -10,7 +10,7 @@ async function createUsersTable() {
         id SERIAL PRIMARY KEY,
         id_token TEXT NOT NULL UNIQUE,
         name VARCHAR(255) NOT NULL,
-        picture TEXT,
+        picture TEXT ,
         createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         updatedAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
       );
@@ -57,7 +57,7 @@ async function createPlansTable() {
       CREATE TABLE IF NOT EXISTS plans (
         id SERIAL PRIMARY KEY,
         planId INTEGER REFERENCES tasks(id),
-        userId TEXT REFERENCES users(id_token)
+        userId INTEGER REFERENCES users(id)
       );
     `;
 
