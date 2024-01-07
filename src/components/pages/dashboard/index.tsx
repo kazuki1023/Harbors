@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import BaseLayout from '@/layouts/BaseLayout';
 import HeaderLogo from '@/components/organisms/HeadLogo';
 import { CheckboxSection } from '@/components/organisms/CheckboxSection';
-import  PlanTable  from '@/components/organisms/PlanTable';
+import { PlanTable } from '@/components/organisms/PlanTable';
 // import getUser from '@/scripts/getUser';
 
 const Dashboard = () => {
