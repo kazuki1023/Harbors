@@ -1,13 +1,13 @@
 // pages/api/insertPlan.js
 import { sql } from '@vercel/postgres';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { getUserIdbyidToken } from '@/scripts/getUserIdbyidToken';
+import { getIdbyuserId } from '@/scripts/getIdbyuserId';
 
 export default async function insertPlan(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     try {
       const { userId, planIds } = req.body;
-      const user_id = await getUserIdbyidToken(userId);
+      const user_id = await getIdbyuserId(userId);
 
       await Promise.all(
         planIds.map((planId: number) => {
