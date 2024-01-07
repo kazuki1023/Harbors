@@ -8,6 +8,9 @@ export const DashboardContainer = () => {
   const router = useRouter();
   const [userData, fetchUserData] = useFetchUserPlanData();
 
+  useEffect(() => {
+    fetchUserData();
+  }, [fetchUserData]);
 
   useEffect(() => {
     const { code } = router.query;
@@ -74,7 +77,6 @@ export const DashboardContainer = () => {
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data)
         const userId = data.sub;
         fetch('/api/insertPlan', {
           method: 'POST',
@@ -88,6 +90,7 @@ export const DashboardContainer = () => {
         })
           .then(response => response.json())
           .then(data => {
+            // planテーブルの情報をとってくる
             fetchUserData();
           })
           .catch(error => {
@@ -98,9 +101,6 @@ export const DashboardContainer = () => {
         console.error('トークン検証中にエラーが発生しました', error);
       });
   };
-  useEffect(() => {
-    fetchUserData();
-  }, [fetchUserData]);
 
   return (
     <DashboardPresentation

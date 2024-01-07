@@ -57,7 +57,8 @@ async function createPlansTable() {
       CREATE TABLE IF NOT EXISTS plans (
         id SERIAL PRIMARY KEY,
         planId INTEGER REFERENCES tasks(id),
-        userId INTEGER REFERENCES users(id)
+        userId INTEGER REFERENCES users(id),
+        UNIQUE (userId, planId)
       );
     `;
 

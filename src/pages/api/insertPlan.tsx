@@ -11,13 +11,18 @@ export default async function insertPlan(req: NextApiRequest, res: NextApiRespon
 
       await Promise.all(
         planIds.map((planId: number) => {
-          return sql`INSERT INTO plans (userId, planId) VALUES (${user_id}, ${planId})`;
+          return sql`
+      INSERT INTO plans (userId, planId)
+      VALUES (${user_id}, ${planId})
+      ON CONFLICT (userId, planId)
+      DO NOTHING
+    `;
         })
       );
 
       res.status(200).json({ message: 'プランが挿入されました。' });
     } catch (error) {
-      if(error instanceof Error) {
+      if (error instanceof Error) {
         console.error('プランの挿入中にエラーが発生しました', error);
         res.status(500).json({ message: 'プランの挿入に失敗しました。', error: error.message });
       } else {
