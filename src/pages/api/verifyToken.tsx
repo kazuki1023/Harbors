@@ -1,23 +1,14 @@
 // pages/api/verifyToken.js
 import { NextApiRequest, NextApiResponse } from 'next';
+import { verifyLineToken } from '@/utils/verifyLineToken';
 
 export default async function verifyToken(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     try {
       const { id_token, client_id } = req.body;
 
-      const response = await fetch('https://api.line.me/oauth2/v2.1/verify', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: new URLSearchParams({
-          id_token,
-          client_id
-        })
-      });
-
-      const data = await response.json();
+      const data = await verifyLineToken(id_token, client_id);
+      res.status(200).json(data);
 
       if (data.error) {
         throw new Error(data.error_description);
