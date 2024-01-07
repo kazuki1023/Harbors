@@ -1,7 +1,11 @@
 import  { CheckboxSectionPresentation }  from './presentation';
-export const ChechboxSectionContainer = () => {
+import { UseFormRegister, useForm } from 'react-hook-form';
+interface CheckboxSectionProps {
+  register: UseFormRegister<any>;
+}
+export const ChechboxSectionContainer: React.FC<CheckboxSectionProps> = ({ register }) => {
   return (
-    <CheckboxSectionPresentation />
+    <CheckboxSectionPresentation register={register}/>
   )
 }
 
