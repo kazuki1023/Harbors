@@ -40,7 +40,7 @@ const Dashboard = () => {
                     'Content-Type': 'application/json'
                   },
                   body: JSON.stringify({
-                    userId: localStorage.getItem('id_token'),
+                    userId: profileData.userId,
                     name: profileData.displayName,
                     picture: profileData.pictureUrl
                   })
@@ -65,6 +65,7 @@ const Dashboard = () => {
   const onSubmit = (data: any) => {
     console.log(data);
     const idToken = localStorage.getItem('id_token');
+    const planIds = data.checkedPlans
     fetch('/api/verifyToken', {
       method: 'POST',
       headers: {
@@ -77,28 +78,27 @@ const Dashboard = () => {
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data);
+        const userId = data.sub;
+        fetch('/api/insertPlan', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            userId,
+            planIds
+          })
+        })
+          .then(response => response.json())
+          .then(data => {
+            console.log(data);
+          })
+          .catch(error => {
+            console.error('プランの挿入中にエラーが発生しました', error);
+          });
       })
       .catch(error => {
         console.error('トークン検証中にエラーが発生しました', error);
-      });
-    const planIds = data.checkedPlans
-    fetch('/api/insertPlan', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        idToken,
-        planIds
-      })
-    })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-      })
-      .catch(error => {
-        console.error('プランの挿入中にエラーが発生しました', error);
       });
   };
   return (

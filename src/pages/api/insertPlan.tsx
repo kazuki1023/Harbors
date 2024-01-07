@@ -6,12 +6,12 @@ import { getUserIdbyidToken } from '@/scripts/getUserIdbyidToken';
 export default async function insertPlan(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     try {
-      const { idToken, planIds } = req.body;
-      const userId = await getUserIdbyidToken(idToken);
+      const { userId, planIds } = req.body;
+      const user_id = await getUserIdbyidToken(userId);
 
       await Promise.all(
         planIds.map((planId: number) => {
-          return sql`INSERT INTO plans (userId, planId) VALUES (${userId}, ${planId})`;
+          return sql`INSERT INTO plans (userId, planId) VALUES (${user_id}, ${planId})`;
         })
       );
 
