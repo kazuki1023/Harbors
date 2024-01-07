@@ -2,9 +2,12 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import DashboardPresentation from './presentation';
+import useFetchUserPlanData from '@/hooks/useFetchUserPlanData';
 
 export const DashboardContainer = () => {
   const router = useRouter();
+  const [userData, fetchUserData] = useFetchUserPlanData();
+
 
   useEffect(() => {
     const { code } = router.query;
@@ -18,7 +21,6 @@ export const DashboardContainer = () => {
       })
         .then(response => response.json())
         .then(data => {
-          console.log(data);
           localStorage.setItem('id_token', data.id_token);
           if (data.access_token) {
             fetch('/api/fetchProfile', {
@@ -29,7 +31,6 @@ export const DashboardContainer = () => {
             })
               .then(response => response.json())
               .then(profileData => {
-                console.log(profileData);
                 fetch('/api/insertUser', {
                   method: 'POST',
                   headers: {
@@ -59,7 +60,6 @@ export const DashboardContainer = () => {
 
   const { register, handleSubmit } = useForm();
   const onSubmit = (data: any) => {
-    console.log(data);
     const idToken = localStorage.getItem('id_token');
     const planIds = data.checkedPlans
     fetch('/api/verifyToken', {
@@ -74,6 +74,7 @@ export const DashboardContainer = () => {
     })
       .then(response => response.json())
       .then(data => {
+        console.log(data)
         const userId = data.sub;
         fetch('/api/insertPlan', {
           method: 'POST',
@@ -87,7 +88,7 @@ export const DashboardContainer = () => {
         })
           .then(response => response.json())
           .then(data => {
-            console.log(data);
+            fetchUserData();
           })
           .catch(error => {
             console.error('プランの挿入中にエラーが発生しました', error);
@@ -97,6 +98,10 @@ export const DashboardContainer = () => {
         console.error('トークン検証中にエラーが発生しました', error);
       });
   };
+  useEffect(() => {
+    fetchUserData();
+  }, [fetchUserData]);
+
   return (
     <DashboardPresentation
       register={register}
