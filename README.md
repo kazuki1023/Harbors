@@ -4,7 +4,7 @@
 - [ ] tailwindのsafelistの最適化
 
 ### to do 
-- [ ] db作成
+- [x] db作成
 jsonで以下のものが取ってこられている
 userテーブル
 ```
@@ -26,5 +26,19 @@ planの種類
 - [x] ログイン
   - [x] ライン
   - [x] ラインでログインするための画面を作る
+  - [x] userテーブルにuserIdをぶち込む
+  - [x] vertifyTokenでidTdTokenを検証し、そのレスポンスにあるUserIDを用いてusersテーブルのidを取得する
 
-- [ ] 登録処理
+- [ ] ログアウト
+  - [ ] isersテーブルの情報を削除する
+- [ ] middleware制御
+https://zenn.dev/sakazuki_xyz/articles/2cabad91bb8acb
+
+- [x] 登録処理
+  - [x] 登録ボタンを押すと、dbにデータが登録される
+  - [x] 同じuserが同じplanをdbに登録できないようにする
+- [ ] 登録されたものがtableに表示されるようにする
+
+
+usersテーブルのカラム名をuser_idに変更
+dashboardのanyを修正
