@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
-
-const useFetchUserPlanData = (): [any[], () => void] => {
-  const [userData, setUserData] = useState([]);
+import  { userTask } from '@/types/UserTask';
+const useFetchUserPlanData = (): [userTask[], () => void] => {
+  const [userData, setUserData] = useState<userTask[]>([]);
 
   const fetchUserData = useCallback(() => {
     fetch('/api/fetchPlans', {
