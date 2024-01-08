@@ -20,7 +20,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         WHERE plans.userId = ${user_id}
       `;
 
-      res.status(200).json(response);
+      res.status(200).json(response.rows);
     } catch (error) {
       console.error('Error fetching user data:', error);
       res.status(500).json({ message: 'plansの取得に失敗しました。' });

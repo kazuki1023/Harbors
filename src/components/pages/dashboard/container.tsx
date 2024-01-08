@@ -106,6 +106,7 @@ export const DashboardContainer = () => {
     <DashboardPresentation
       register={register}
       handleSubmit={handleSubmit(onSubmit)}
+      userTask={userData}
     />
   )
 }
