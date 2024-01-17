@@ -1,8 +1,12 @@
 import Image from "next/image"
-export const AvatorPresentation = (props: any) => {
+interface AvatorProps {
+    picture: string;
+}
+export const AvatorPresentation: React.FC<AvatorProps> = (picture) => {
+    console.log(picture)
     return (
         <Image
-            src="/images/profile.jpg"
+            src={picture.picture}
             alt="Profile image"
             width={48}
             height={48}
