@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import  { userTask } from '@/types/UserTask';
+import  { userTask } from '@/types/userTask';
 const useFetchUserPlanData = (): [userTask[], () => void] => {
   const [userData, setUserData] = useState<userTask[]>([]);
 
