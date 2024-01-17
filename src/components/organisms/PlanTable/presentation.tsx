@@ -1,9 +1,9 @@
 import TableHead from "./TableHead";
 import TableRow from "./TableRow";
-import { userTask } from '@/types/UserTask';
+import { userTaskLGroup } from '@/types/userTask';
 
 interface PlanTablePresentationProps {
-  userTask: userTask[];
+  userTask: userTaskLGroup[];
 }
 const PlanTablePresentation: React.FC<PlanTablePresentationProps> = ({userTask}) => {
   return (
