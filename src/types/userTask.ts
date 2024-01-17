@@ -4,3 +4,10 @@ export type userTask = {
   name: string;
   userid: number;
 }
+
+export type userTaskLGroup = {
+  userid: number;
+  picture: string;
+  displayName: string;
+  tasks: string[];
+}
