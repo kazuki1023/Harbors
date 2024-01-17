@@ -38,7 +38,10 @@ https://zenn.dev/sakazuki_xyz/articles/2cabad91bb8acb
   - [x] 登録ボタンを押すと、dbにデータが登録される
   - [x] 同じuserが同じplanをdbに登録できないようにする
 - [ ] 登録されたものがtableに表示されるようにする
+  - [ ] tableRowをcontainer/presentationにわけて、containerでデータを加工してあげて、それをpresentationに渡す
 
 
-usersテーブルのカラム名をuser_idに変更
-dashboardのanyを修正
+
+- [ ] usersテーブルのカラム名をuser_idに変更
+- [ ] dashboardのanyを修正
+- [ ] 本番環境で動かない原因を調べる
