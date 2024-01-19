@@ -1,7 +1,10 @@
 import { AvatorPresentation } from "./presentation";
-
-export const AvatorContainer = (props:any) => {
+interface AvatorProps {
+    picture: string;
+}
+export const AvatorContainer: React.FC<AvatorProps> = ({picture}) => {
+    console.log(picture)
     return (
-        <AvatorPresentation props={props}/>
+        <AvatorPresentation picture={picture}/>
     )
 }
